@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loader from "./Loader";
+import UserCardInfo from "./UserCardInfo";
 
 class Table extends Component {
   state = {
@@ -289,22 +290,15 @@ class Table extends Component {
           <Loader />
         )}
         {user.description || userAddress ? (
-          <div>
-            <p>
-              Выбран пользователь:
-              <b>
-                {user.firstName} {user.lastName}
-              </b>
-            </p>
-            <p>
-              Описание:
-              <textarea value={user.description} />
-            </p>
-            Адрес проживания: <b>{userAddress.streetAddress}</b>
-            Город: <b>{userAddress.city}</b>
-            Провинция/штат: <b>{userAddress.state}</b>
-            Индекс: <b>{userAddress.zip}</b>
-          </div>
+          <UserCardInfo
+            userFirstName={user.firstName}
+            userLastName={user.lastName}
+            userDescription={user.description}
+            userAddress={userAddress.address}
+            userCity={userAddress.city}
+            userState={userAddress.state}
+            userZipCode={userAddress.zip}
+          />
         ) : null}
       </div>
     );
